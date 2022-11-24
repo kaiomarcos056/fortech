@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <!-- BULMA IO-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- FONTS IMPORT-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- INICIO MENU -->
+    <nav class="navbar">
+      <div class="container menu-container">
+        <!-- BRAND -->
+        <div class="navbar-brand">
+          <a href="../index.html">
+            <img src="../assets/imgs/logo-ufeed-bar.svg" class="img-logo" />
+          </a>
+
+          <a href="#" class="navbar-burger" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- MENU -->
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+            <a href="#" class="navbar-item">
+              <p class="control pesquisa">
+                <input
+                  class="input is-rounded pesquisa"
+                  type="text"
+                  placeholder="Pesquise por Disciplinas ou Professores..."
+                />
+              </p>
+              <p class="control">
+                <button class="button is-rounded">
+                  <span class="icon is-small is-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </button>
+              </p>
+            </a>
+          </div>
+          <div class="navbar-end">
+            <a href="professorPesquisa.html" class="navbar-item">Professores</a>
+            <a
+              href="../views/semestres/primeiro-semestre.html"
+              class="navbar-item"
+              >Disciplinas</a
+            >
+            <a href="#" class="navbar-item">Sobre Nós</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <button
+                  class="button is-rounded"
+                  style="background: #485df2 !important; width: 0rem"
+                >
+                  <span class="icon is-small is-right">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+                </button>
+              </a>
+              <div class="navbar-dropdown">
+                <a href="login.html" class="navbar-item">
+                  Logar
+                </a>
+                <a href="cadastro.html" class="navbar-item">
+                  Cadastrar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIM MENU -->
+
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+      <div class="container">
+        <div class="hero-body hero-disciplinas">
+          <div class="columns is-vcentered">
+            <div class="column is-12" style="padding: 0rem 3rem">
+              <h1 class="title is-4 title-disciplinas">Login</h1>
+              <div class="box box-login">
+                <div class="columns is-vcentered">
+                  <div class="column is-5">
+                    <figure class="image ">
+                      <img src="../assets/imgs/login.png">
+                    </figure>
+                  </div>
+                  <div class="column is-1"></div>
+                  <div class="column">
+                    <div class="field">
+                      <label class="label">Matricula:</label>
+                      <div class="control">
+                        <input class="input" type="text" placeholder="519281" />
+                      </div>
+                    </div>
+                    <div class="field">
+                      <label class="label">Senha:</label>
+                      <div class="control">
+                        <input
+                          class="input"
+                          type="password"
+                          placeholder="**********"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                      <div class="">
+                        <button class="btn-login">Logar</button>
+                      </div>
+                    </div>
+                    <div class="field">
+                      <div class="control">
+                        <label class="checkbox">
+                          <b>Não possui um login?</b>
+                          <a href="#">Faça seu cadastro</a>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIM CONTEUDO-->
+
+    <script src="../../assets/js/script.js"></script>
+  </body>
+</html>

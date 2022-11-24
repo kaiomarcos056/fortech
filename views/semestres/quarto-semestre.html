@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Disciplinas</title>
+    <!-- BULMA IO-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- FONTS IMPORT-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link href="../../assets/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+     <!-- INICIO MENU -->
+     <nav class="navbar ">   
+        <div class="container menu-container">
+          <!-- BRAND -->
+          <div class="navbar-brand">
+            
+            <a href="../../index.html">
+              <img src="../../assets/imgs/logo-ufeed-bar.svg" class="img-logo" />
+            </a>
+            
+            <a href="#" class="navbar-burger" data-target="navMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
+          </div>
+          <!-- MENU -->
+          <div class="navbar-menu" id="navMenu">
+            <div class="navbar-start">
+              <a href="#" class="navbar-item">
+                <p class="control pesquisa">
+                  <input
+                    class="input is-rounded pesquisa"
+                    type="text"
+                    placeholder="Pesquise por Disciplinas ou Professores..."
+                  />
+                </p>
+                <p class="control">
+                  <button class="button is-rounded">
+                    <span class="icon is-small is-right">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
+                  </button>
+                </p>
+              </a>
+            </div>
+            <div class="navbar-end">
+              <a href="../professorPesquisa.html" class="navbar-item">Professores</a>
+              <a href="primeiro-semestre.html" class="navbar-item">Disciplinas</a>
+              <a href="#" class="navbar-item">Sobre Nós</a>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                  <button class="button is-rounded" style="background: #485df2 !important;width: 0rem">
+                    <span class="icon is-small is-right">
+                      <i class="fa-solid fa-user"></i>
+                    </span>
+                  </button>
+                </a>
+                <div class="navbar-dropdown">
+                  <a href="../login.html" class="navbar-item">
+                    Logar
+                  </a>
+                  <a href="../cadastro.html" class="navbar-item">
+                    Cadastrar
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- FIM MENU -->
+
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium  ">
+        <div class="container">
+        <div class="hero-body hero-disciplinas">
+              <div class="columns">
+              
+                <div class="column is-2">
+                    <div class="buttons">
+                        <a href="primeiro-semestre.html">
+                          <button class="button is-primary btn btn-disable" >1º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="segundo-semestre.html">
+                          <button class="button is-primary btn btn-disable">2º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="terceiro-semestre.html">
+                          <button class="button is-primary btn btn-disable" >3º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="quarto-semestre.html">
+                          <button class="button is-primary btn btn-menu-disc" >4º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="quinto-semestre.html">
+                          <button class="button is-primary btn btn-disable" >5º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="sexto-semestre.html">
+                          <button class="button is-primary btn btn-disable" >6º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="setimo-semestre.html">
+                          <button class="button is-primary btn btn-disable" >7º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="oitavo-semestre.html">
+                          <button class="button is-primary btn btn-disable" >8º Semestre</button>
+                        </a>
+                    </div>
+                    <div class="buttons">
+                        <a href="optativa-semestre.html">
+                          <button class="button is-primary btn btn-disable" >Optativas</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="column is-10">
+                  <div class="columns">
+                    <div class="column">
+                      <h1 class="title is-5">&nbsp;Obrigatórias</h1>
+                    </div>
+                  </div>
+                  <div class="columns">
+                        <div class="column is-3">
+                            <div class="buttons">
+                                <button class="btn-disc" >
+                                    <span class="icon">
+                                        <i class="fa-solid fa-code"></i>
+                                    </span>
+                                    <span>Metodologia de Pesquisa Científica</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columns">
+                      <div class="column">
+                        <h1 class="title is-5">&nbsp;Eletivas</h1>
+                      </div>
+                    </div>
+                    <div class="columns">
+                      <div class="column is-3">
+                          <div class="buttons">
+                              <button class="btn-disc" >
+                                  <span class="icon">
+                                      <i class="fa-solid fa-code"></i>
+                                  </span>
+                                  <span>Ánalise e Projeto de Sistemas</span>
+                              </button>
+                          </div>
+                      </div>
+                      <div class="column is-3">
+                        <div class="buttons">
+                            <button class="btn-disc" >
+                                <span class="icon">
+                                    <i class="fa-solid fa-code"></i>
+                                </span>
+                                <span>Desenho II</span>
+                            </button>
+                        </div>
+                      </div>
+                      <div class="column is-3">
+                      <div class="buttons">
+                          <button class="btn-disc" >
+                              <span class="icon">
+                                  <i class="fa-solid fa-code"></i>
+                              </span>
+                              <span>Estrutura de Dados</span>
+                          </button>
+                      </div>
+                      </div>
+                      <div class="column is-3">
+                    <div class="buttons">
+                        <button class="btn-disc" >
+                            <span class="icon">
+                                <i class="fa-solid fa-code"></i>
+                            </span>
+                            <span>Fotografia Digital</span>
+                        </button>
+                    </div>
+                      </div>
+                    </div>
+                    <div class="columns">
+                      <div class="column is-3">
+                          <div class="buttons">
+                              <button class="btn-disc" >
+                                  <span class="icon">
+                                      <i class="fa-solid fa-code"></i>
+                                  </span>
+                                  <span>Rede de Computadores</span>
+                              </button>
+                          </div>
+                      </div>
+                      <div class="column is-3">
+                        <div class="buttons">
+                            <button class="btn-disc" >
+                                <span class="icon">
+                                    <i class="fa-solid fa-code"></i>
+                                </span>
+                                <span>Semiótica Aplicada</span>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+               
+              </div>
+        </div>
+      </div>
+      </section>
+    <!-- FIM CONTEUDO-->
+
+    <script src="../../assets/js/script.js"></script>
+  </body>
+</html>

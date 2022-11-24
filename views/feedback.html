@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Feedback</title>
+    <!-- BULMA IO-->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <!-- ICONS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    />
+    <!-- FONTS IMPORT-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link href="../assets/css/style.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!-- INICIO MENU -->
+    <nav class="navbar">
+      <div class="container menu-container">
+        <!-- BRAND -->
+        <div class="navbar-brand">
+          <a href="../index.html">
+            <img src="../assets/imgs/logo-ufeed-bar.svg" class="img-logo" />
+          </a>
+
+          <a href="#" class="navbar-burger" data-target="navMenu">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <!-- MENU -->
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+            <a href="#" class="navbar-item">
+              <p class="control pesquisa">
+                <input
+                  class="input is-rounded pesquisa"
+                  type="text"
+                  placeholder="Pesquise por Disciplinas ou Professores..."
+                />
+              </p>
+              <p class="control">
+                <button class="button is-rounded">
+                  <span class="icon is-small is-right">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </span>
+                </button>
+              </p>
+            </a>
+          </div>
+          <div class="navbar-end">
+            <a href="professorPesquisa.html" class="navbar-item">Professores</a>
+            <a href="semestres/primeiro-semestre.html" class="navbar-item"
+              >Disciplinas</a
+            >
+            <a href="#" class="navbar-item">Sobre Nós</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                <button
+                  class="button is-rounded"
+                  style="background: #485df2 !important; width: 0rem"
+                >
+                  <span class="icon is-small is-right">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+                </button>
+              </a>
+              <div class="navbar-dropdown">
+                <a href="login.html" class="navbar-item"> Logar </a>
+                <a href="cadastro.html" class="navbar-item"> Cadastrar </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- FIM MENU -->
+
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+      <div class="container">
+        <div class="hero-body hero-disciplinas">
+          <div class="columns is-vcentered">   
+            <div class="column is-6">
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    <b>Selecione um Professor e prencha os campos abaixo  de acordo com a sua experiência com o mesmo:</b>
+                </h1>
+                <br>
+                <div class="columns is-vcentered">
+                    <div class="column is-8">
+                        <div class="box box-professores">
+                            <div class="columns is-vcentered">
+                                <div class="column is-3">
+                                    <figure class="image is-64x64">
+                                        <img class="is-rounded" src="../assets/imgs/professores/michael.jpg">
+                                    </figure>
+                                </div>
+                                <div class="column is-6">
+                                    <h2 class="title is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                                        Michael Jackson
+                                    </h1>
+                                    <p class="p-disciplinas" style="color:blue;">michael@email.com</p> 
+                                </div>
+                                <div class="column is-3">
+                                    <center>
+                                    <figure class="image is-32x32">
+                                        <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg">
+                                    </figure>
+                                    <h1 class="title is-6 av-boa">
+                                        5,0
+                                    </h1>
+                                </center>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <span class="icon is-medium is-right">
+                            <i class="fa-solid fa-chevron-down" style="font-size:2rem;"></i>
+                        </span>
+                    </div>
+                </div>
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    Michael Jackson é um professor: 
+                </h1>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox">
+                    Remember me
+                </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIM CONTEUDO-->
+
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
