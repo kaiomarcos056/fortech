@@ -1,0 +1,63 @@
+<!-- INICIO MENU -->
+<nav class="navbar ">   
+    <div class="container menu-container">
+      <!-- BRAND -->
+      <div class="navbar-brand">
+        
+        <a href="/">
+          <img src="../assets/imgs/logo-ufeed-bar.svg" class="img-logo" />
+        </a>
+        
+        <a href="#" class="navbar-burger" data-target="navMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+      <!-- MENU -->
+      <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+          <a href="#" class="navbar-item">
+            <p class="control pesquisa">
+              <input
+                class="input is-rounded pesquisa"
+                type="text"
+                placeholder="Pesquise por Disciplinas ou Professores..."
+              />
+            </p>
+            <p class="control">
+              <button class="button is-rounded">
+                <span class="icon is-small is-right">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+              </button>
+            </p>
+          </a>
+        </div>
+        <div class="navbar-end">
+          <a href="/professor" class="navbar-item">Professores</a>
+          <a href="/cadeiras/1" class="navbar-item">Disciplinas</a>
+          <a href="#" class="navbar-item">Sobre Nós</a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="#" class="navbar-item">Sair &nbsp;<i class="fa-solid fa-right-from-bracket"></i></a>
+            <a class="navbar-link">
+              <button class="button is-rounded" style="background: #485df2 !important;width: 0rem">
+                <span class="icon is-small is-right">
+                  <i class="fa-solid fa-user"></i>
+                </span>
+              </button>
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/login" class="navbar-item">
+                Logar
+              </a>
+              <a href="/cadastro" class="navbar-item">
+                Cadastrar
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- FIM MENU -->

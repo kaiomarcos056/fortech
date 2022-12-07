@@ -1,0 +1,85 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+        <!-- INICIO CONTEUDO-->
+        <section class="hero is-medium">
+            <div class="container">
+                <div class="hero-body hero-disciplinas">
+                    <div class="columns is-vcentered">
+                        <div class="column is-12" style="padding: 0rem 3rem">
+                            <h1 class="title is-4 title-disciplinas">Login</h1>
+                            <div class="box box-login">
+                                <div class="columns is-vcentered">
+                                    <div class="column is-5">
+                                        <figure class="image ">
+                                            <img src="./assets/imgs/login.png">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-1"></div>
+                                    <div class="column">
+                                        <%- include('includes/mensagens'); %>
+
+                                        <form action="/login" method="post" >
+
+                                            <div class="field">
+                                                <label class="label">Matricula:</label>
+                                                <div class="control">
+                                                    <input class="input" type="text" placeholder="519281" name="matricula"/>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Senha:</label>
+                                                <div class="control">
+                                                    <input class="input" type="password" placeholder="**********" name="senha"/>
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <button class="btn-login">Logar</button>
+                                            </div>
+                                            <div class="field">
+                                                <div class="control">
+                                                    <label class="checkbox">
+                                                        <b>Não possui um login?</b>
+                                                        <a href="#">Faça seu cadastro</a>
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <form action="/logando" method="post" >
+
+            <div class="field">
+                <label class="label">Matricula:</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="519281" name="matricula"/>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Senha:</label>
+                <div class="control">
+                    <input class="input" type="password" placeholder="**********" name="senha"/>
+                </div>
+            </div>
+            <div class="field">
+                <button class="btn-login">Logar</button>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <label class="checkbox">
+                        <b>Não possui um login?</b>
+                        <a href="#">Faça seu cadastro</a>
+                    </label>
+                </div>
+            </div>
+
+        </form>
+        <!-- FIM CONTEUDO-->
+<%- include('includes/footer') -%>

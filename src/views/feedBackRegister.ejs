@@ -1,0 +1,218 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+      <div class="container">
+        <div class="hero-body hero-disciplinas">
+          <div class="columns is-vcentered">   
+            <div class="column is-6">
+                <%- include('includes/mensagens'); %>
+            <% listProfFeedResult.forEach(profResult => { %>
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    <b>Selecione um Professor e prencha os campos abaixo  de acordo com a sua experiência com o mesmo:</b>
+                </h1>
+                <br>
+            
+                <div class="columns is-vcentered">
+                    
+                    <div class="column is-9">
+                        <div class="dropdown is-hoverable">
+                            <div class="dropdown-trigger dropdown-prof">
+                                <div class="columns is-vcentered">
+                                    <div class="column is-3">
+                                        <figure class="image" style="padding: 0;">
+                                            <img class="is-rounded" src="<%- profResult.foto %>">
+                                        </figure>
+                                    </div>
+                                    <div class="column is-6">
+                                        <h2 class="title is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                                            <% if(profResult.nome.split(" ")[1].length > 2){%>
+                                                <%= profResult.nome.split(" ")[0] + " " + profResult.nome.split(" ")[1] %>
+                                              <% }else { %>
+                                                <%= profResult.nome.split(" ")[0] + " " + profResult.nome.split(" ")[1] + " " + profResult.nome.split(" ")[2] %>
+                                              <% } %>
+                                        </h2>
+                                        <p class="p-disciplinas" style="color:blue;">
+                                            <%- profResult.email %>
+                                        </p> 
+                                    </div>
+                                    <div class="column is-2">
+                                        <center>
+                                            <figure class="image is-32x32">
+                                                <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg">
+                                            </figure>
+                                            <h1 class="title is-6 av-boa">
+                                                5,0
+                                            </h1>
+                                        </center>
+                                    </div>
+                                    <div class="column is-1">
+                                        <span class="icon">
+                                            <i class="fa-solid fa-chevron-down" style="font-size:2rem;"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                                <div class="dropdown-content" style="padding: 0.5rem;overflow-x: auto;max-height: 15rem !important;margin-top: 0.5rem;">
+                                    <% listProfs.forEach(profs => { %>
+                                    <a href="/feedbackRegister/<%- profs.id_prof %>" class="dropdown-item-prof">
+                                        <div class="items-prof">
+                                            <div class="columns is-vcentered">
+                                                <div class="column is-2 is-offset-1">
+                                                    <figure class="image">
+                                                        <img class="is-rounded" src="<%- profs.foto %>">
+                                                    </figure>
+                                                </div>
+                                                <div class="column is-5">
+                                                    <h2 class="title is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                                                        <% if(profs.nome.split(" ")[1].length > 2){%>
+                                                            <%= profs.nome.split(" ")[0] + " " + profs.nome.split(" ")[1] %>
+                                                          <% }else { %>
+                                                            <%= profs.nome.split(" ")[0] + " " + profs.nome.split(" ")[1] + " " + profs.nome.split(" ")[2] %>
+                                                          <% } %>
+                                                    </h2>
+                                                    <p class="p-disciplinas" style="color:blue;"><%- profs.email %></p> 
+                                                </div>
+                                                <div class="column is-2">
+                                                    <center>
+                                                        <figure class="image is-24x24">
+                                                            <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg">
+                                                        </figure>
+                                                        <h1 class="title is-6 av-boa">
+                                                            5,0
+                                                        </h1>
+                                                    </center>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </a>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    <%- profResult.nome %> é um(a) professor(a): 
+                </h1>
+
+                <form action="/registerFeed/:<%- profResult.id_prof %>"  method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Atencioso">Atencioso
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Flexivel">Flexivel
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Pontual">Pontual
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Organizado">Organizado
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Amigavel">Amigavel
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Otima Didatica">Otima Didatica
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Cantor">Cantor  
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Assiduo">Assiduo
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Gentil">Gentil
+                </label>
+                <label class="checkbox checkbox-nota">
+                    <input type="checkbox" name="qualidades" value="Fofoqueiro">Fofoqueiro
+                </label>
+                <br><br>
+
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    Minha nota para <%- profResult.nome %>: 
+                </h1>
+
+                <br>
+                <div class="columns">
+                    <div class="column" style="padding:0;">
+                        <figure class="image is-32x32">
+                            <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg">
+                        </figure>
+                    </div>
+                    <div class="column" style="padding:0;"></div>
+                    <div class="column" style="padding:0;">
+                        <figure class="image is-32x32">
+                            <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg">
+                        </figure>
+                    </div>
+                    <div class="column" style="padding:0;"></div>
+                    <div class="column" style="padding:0;">
+                        <figure class="image is-32x32">
+                            <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg">
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column" style="padding:0;">
+                        <label class="radio">
+                            <input type="radio" name="nota" value="1">
+                            1
+                        </label>
+                    </div>
+                    <div class="column" style="padding:0;">
+                        <label class="radio">
+                            <input type="radio" name="nota" value="2">
+                            2
+                        </label>
+                    </div>
+                    <div class="column" style="padding:0;">
+                        <label class="radio">
+                            <input type="radio" name="nota" value="3">
+                            3
+                        </label>
+                    </div>
+                    <div class="column" style="padding:0;">
+                        <label class="radio">
+                            <input type="radio" name="nota" value="4">
+                            4
+                        </label>
+                    </div>
+                    <div class="column" style="padding:0;">
+                        <label class="radio">
+                            <input type="radio" name="nota" value="5">
+                            5
+                        </label>
+                    </div>
+                </div>
+
+                <textarea name="comentario" class="textarea" placeholder="Caso queira, você pode escrever aqui seu feedback relatando detalhadamente sua experiência com o Professor..."></textarea>
+            
+                <br>
+
+                <div class="columns is-vcentered">
+                    <div class="column">
+                        <label class="checkbox">
+                            <input type="checkbox" name="anonimo" value="true">Feedback Anônimo
+                        </label>
+                    </div>
+                    <div class="column">
+                        <div class="buttons">
+                            <button class="button is-primary btn" >Deixe seu Feedback</button>
+                        </div>
+                    </div>
+                </div>
+                </form>    
+            <% }) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIM CONTEUDO-->
+    <%- include('includes/footer') -%>

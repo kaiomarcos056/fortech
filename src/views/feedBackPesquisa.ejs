@@ -1,0 +1,182 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+      <div class="container">
+        <div class="hero-body hero-disciplinas">
+          <div class="columns is-vcentered">   
+                <% listFeedResult.forEach(profResult => { %>
+                    <div class="column is-6">
+                        <div class="columns is-vcentered">
+                            <div class="column is-3">
+                                <figure class="image is-128x128">
+                                <img
+                                    class="is-rounded"
+                                    src="<%- profResult.foto %>"
+                                />
+                                </figure>
+                            </div>
+                            <div class="column is-7">
+                                <h1 class="title is-5"><%- profResult.nome %></h1>
+                                <h1 class="subtitle is-5 sub-prof"><%- profResult.email %></h1>
+                            </div>
+                            <div class="column is-2">
+                                <% let notas = 0 %>
+                                <% let media = 0 %>
+                                <% listFeedBacks.forEach(feedRes => { %>
+                                <% notas += parseInt(feedRes.nota) %>
+                                <% media++ %>
+                                <% }) %>
+                                <% let notaFinal =  notas/media %>
+                                <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                    <% if( notaFinal < 2.5 ){ %>
+                                      <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                                    <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                                      <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
+                                    <% }else if( notaFinal >= 3.5  ){ %>
+                                      <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
+                                    <% } else {%>
+                                      <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                                    <% } %>
+                                  </figure>
+                                  <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.4rem;font-size: 1.5rem;">
+                                    <% if( notaFinal < 2.5 ){ %>
+                                      <b class="av-ruim">
+                                        <%- notaFinal.toFixed(1) %>
+                                      </b>
+                                    <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                                      <b class="av-neutra">
+                                        <%- notaFinal.toFixed(1) %>
+                                      </b>
+                                    <% }else if( notaFinal >= 3.5  ){ %>
+                                      <b class="av-boa">
+                                        <%- notaFinal.toFixed(1) %>
+                                      </b>
+                                    <% } else {%>
+                                      <b class="av-ruim">
+                                       0.0
+                                      </b>
+                                    <% } %>
+                                  </h1>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div class="column is-1"></div>
+
+                    <div class="column is-5">
+                        <a href="/feedbackRegister/<%- profResult.id_prof %>">
+                            <div class="buttons">
+                                <button class="button is-primary btn">Deixe seu Feedback</button>
+                            </div>
+                        </a>
+                    </div>
+                <% }) %>
+          </div>
+          <div class="columns">
+            <div class="column">
+                <div class="box box-prof" style="padding:1.7rem;">
+                    <div class="columns is-multiline">
+                        <% comentarios.forEach(cmt => { %>
+                            <div class="column is-6">
+                                <div class="box box-professores">
+                                    <div class="columns">
+                                        
+                                        <div class="column is-2">
+                                            <% if(cmt.anonimo != "true") {%>
+                                                <figure class="image is-64x64">
+                                                    <img class="is-rounded" src="<%- cmt.foto %>"/>
+                                                </figure>
+                                                    <% if(cmt.nota <= 2){ %>
+                                                        <figure class="image is-24x24">
+                                                            <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg" style="margin-top: -1.2rem !important;"/>
+                                                        </figure>
+                                                        <h1 class="subtitle is-5 subtitle-disciplinas av-ruim" style="font-weight: bold; padding: 0;">
+                                                            &nbsp;&nbsp;&nbsp;<%- cmt.nota %>.0
+                                                        </h1>
+                                                    <% } else if(cmt.nota >=2 && cmt.nota < 4){%>
+                                                        <figure class="image is-24x24">
+                                                            <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg" style="margin-top: -1.2rem !important;"/>
+                                                        </figure>
+                                                        <h1 class="subtitle is-5 subtitle-disciplinas av-neutra" style="font-weight: bold; padding: 0;">
+                                                            &nbsp;&nbsp;&nbsp;<%- cmt.nota %>.0
+                                                        </h1>
+                                                    <% } else{%>
+                                                        <figure class="image is-24x24">
+                                                            <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg" style="margin-top: -1.2rem !important;"/>
+                                                        </figure>
+                                                        <h1 class="subtitle is-5 subtitle-disciplinas av-boa" style="font-weight: bold; padding: 0;">
+                                                            &nbsp;&nbsp;&nbsp;<%- cmt.nota %>.0
+                                                        </h1>
+                                                    <% } %> 
+                                            <% } else{%>
+                                                <% if(cmt.nota <= 2){ %>
+                                                    <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                                        <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg"/>
+                                                    </figure>
+                                                    <h1 class="subtitle is-5 subtitle-disciplinas av-ruim" style="font-weight: bold;padding: 0;margin-left: 0.9rem;font-size: 1.5rem;">
+                                                        <%- cmt.nota %>.0
+                                                    </h1>
+                                                <% } else if(cmt.nota >=2 && cmt.nota < 4){%>
+                                                    <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                                        <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg"/>
+                                                    </figure>
+                                                    <h1 class="subtitle is-5 subtitle-disciplinas av-neutra" style="font-weight: bold;padding: 0;margin-left: 0.9rem;font-size: 1.5rem;">
+                                                        <%- cmt.nota %>.0
+                                                    </h1>
+                                                <% } else{%>
+                                                    <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                                        <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg"/>
+                                                    </figure>
+                                                    <h1 class="subtitle is-5 subtitle-disciplinas av-boa" style="font-weight: bold;padding: 0;margin-left: 0.9rem;font-size: 1.5rem;">
+                                                        <%- cmt.nota %>.0
+                                                    </h1>
+                                                <% } %> 
+                                            <% } %>
+                                        </div>
+
+                                        <div class="column is-10">
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <h1 class="title is-6 subtitle-disciplinas" style="margin: 0;">
+                                                        <% if( cmt.anonimo != "true" ){%>
+                                                          <h1 class="title is-5" style="padding: 0;margin: 0;"><b><%- cmt.nome %></b></h1>
+                                                        <% } else {%>
+                                                          <h1 class="title is-5" style="padding: 0;margin: 0;"><b>Anônimo</b></h1>  
+                                                        <% } %>
+                                                    </h1>
+                                                    <p style="font-size: 0.8rem;"> 
+                                                        <%- cmt.comentario %>
+                                                    </p>
+                                                </div>                                                
+                                            </div>
+                                            <div class="columns">
+                                                <div class="column">
+                                                    <p style="font-size: 0.8rem; text-align: right; font-weight: bold;">
+                                                        <span class="icon is-small is-right">
+                                                            <i class="fa-solid fa-up-long" style="color:green;"></i>
+                                                        </span>
+                                                        <b style="color:green;"><%- cmt.av_pos %></b>
+                                                        <span class="icon is-small is-right">
+                                                            <i class="fa-solid fa-down-long" style="color:red;"></i>
+                                                        </span>
+                                                        <b style="color:red;"><%- cmt.av_neg %></b>    
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIM CONTEUDO-->
+    <%- include('includes/footer') -%>
