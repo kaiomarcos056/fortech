@@ -1,18 +1,24 @@
 const {openDb} = require('../db/configDB');
 
 class FeedBack{
-    constructor(body,idProf){
+    constructor(body,idProf,user){
         this.body = body;
         this.idProf = idProf;
         this.errors = [];
         this.user = null;
         this.linhas = [];
+        this.dadosUsuario = user;
     }
 
     async register(){
         this.validaCampos();
 
-        let calcNota = await this.calculaNota(this.idProf.replace(":",""));
+        let idAluno;
+        this.dadosUsuario.forEach(aluno =>{
+            idAluno = aluno.id_aluno;
+        })
+
+        let calcNota = await this.calculaNota(this.idProf);
         let index = 1;
         let somatorioNotas = 0;
         calcNota.forEach(nt =>{
@@ -26,7 +32,7 @@ class FeedBack{
         if(this.errors.length > 0) return;
         try{
             console.log(`Id Professor: ${this.idProf} Nota Final: ${notaFinal}`);
-            await this.inserirFeedBack(this.body,this.idProf);
+            await this.inserirFeedBack(this.body,this.idProf,idAluno);
             await this.updateNotaProfessor(notaFinal,this.idProf);
             console.log(this.body);
         }catch(e){
@@ -56,9 +62,9 @@ class FeedBack{
        })
     }
 
-    async inserirFeedBack(fed,id){
+    async inserirFeedBack(fed,id,idAluno){
         openDb().then(db => {
-            db.run('INSERT INTO feedback(id_prof,id_aluno,qualidade,nota,comentario,anonimo,av_pos,av_neg) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [id.replace(":",""), 1, fed.qualidades, fed.nota, fed.comentario, fed.anonimo,0,0])
+            db.run('INSERT INTO feedback(id_prof,id_aluno,qualidade,nota,comentario,anonimo,av_pos,av_neg) VALUES(?, ?, ?, ?, ?, ?, ?, ?)', [id, idAluno, fed.qualidades, fed.nota, fed.comentario, fed.anonimo,0,0])
         });
     }
 
@@ -75,7 +81,7 @@ class FeedBack{
 
     async listFeedBackComentarios(id){
         return openDb().then(db => {
-            return db.all('SELECT feedback.id_fb,feedback.id_prof,feedback.id_aluno,feedback.qualidade,feedback.nota,feedback.comentario,feedback.anonimo,feedback.av_pos,feedback.av_neg,professor.nome,professor.nota,aluno.nome,aluno.foto FROM feedback as feedback INNER JOIN professor as professor ON (professor.id_prof = feedback.id_prof) INNER JOIN aluno as aluno ON (aluno.id_aluno = feedback.id_aluno) WHERE feedback.id_prof = ?', [id] , (err, rows) => {
+            return db.all('SELECT feedback.id_fb,feedback.id_prof,feedback.id_aluno,feedback.qualidade,feedback.nota,feedback.comentario,feedback.anonimo,feedback.av_pos,feedback.av_neg,professor.nome,professor.nota as notaProf,aluno.nome,aluno.foto FROM feedback as feedback INNER JOIN professor as professor ON (professor.id_prof = feedback.id_prof) INNER JOIN aluno as aluno ON (aluno.id_aluno = feedback.id_aluno) WHERE feedback.id_prof = ?', [id] , (err, rows) => {
                if (err) return console.error('Deu erro aqui: ',err.message);
                rows.forEach(row => {
                    return console.log(row);
@@ -86,7 +92,7 @@ class FeedBack{
 
     async calculaNota(id){
         return openDb().then(db => {
-            return db.all('SELECT feedback.id_fb,feedback.id_prof,feedback.nota,professor.nome,professor.nome, FROM feedback as feedback INNER JOIN professor as professor ON (professor.id_prof = feedback.id_prof) INNER JOIN aluno as aluno ON (aluno.id_aluno = feedback.id_aluno) WHERE feedback.id_prof = ?', [id] , (err, rows) => {
+            return db.all('SELECT feedback.id_fb,feedback.id_prof,feedback.nota,professor.nome,professor.nota FROM feedback as feedback INNER JOIN professor as professor ON (professor.id_prof = feedback.id_prof) INNER JOIN aluno as aluno ON (aluno.id_aluno = feedback.id_aluno) WHERE feedback.id_prof = ?', [id] , (err, rows) => {
                if (err) return console.error('Deu erro aqui: ',err.message);
                rows.forEach(row => {
                    return console.log(row);

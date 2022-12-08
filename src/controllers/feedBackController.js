@@ -2,24 +2,23 @@ const FeedBack = require('../models/FeedBackModel')
 
 exports.registraFeedBack = async function(req,res){
     try {
-        const feedback = new FeedBack(req.body,req.params.id);
+        const feedback = new FeedBack(req.body,req.params.id,req.session.user);
         await feedback.register();
         const comentarios = await feedback.listFeedBackComentarios(req.params.id);
-        console.log(comentarios.forEach( notas => {notas.nota}));
 
         if(feedback.errors.length > 0){
             console.log('Erros #01: ',feedback.errors)
             req.flash('errors', feedback.errors);
             req.session.save(function() {
-                return res.redirect('/feedBackRegister/'+req.params.id.replace(":",""));
+                return res.redirect('/feedBackRegister/'+req.params.id);
             });
             return;
         }
         req.flash('success', 'Seu feedBack foi cadastrado com sucesso.');
-        req.session.save(function() {
-            return res.redirect('/feedBackRegister/'+req.params.id.replace(":",""));
-        });
-        return;
+        //req.session.save(function() {
+            return res.redirect('/feedback/'+req.params.id);
+        //});
+        //return;
     }catch(e){
         console.log(e);
         res.render('404');

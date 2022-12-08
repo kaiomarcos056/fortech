@@ -40,22 +40,26 @@
           <a href="/professor" class="navbar-item">Professores</a>
           <a href="/cadeiras/1" class="navbar-item">Disciplinas</a>
           <div class="navbar-item has-dropdown is-hoverable">
-            <!--<a href="#" class="navbar-item">Sair &nbsp;<i class="fa-solid fa-right-from-bracket"></i></a>-->
-            <a class="navbar-link">
-              <button class="button is-rounded" style="background: #485df2 !important;width: 0rem">
-                <span class="icon is-small is-right">
-                  <i class="fa-solid fa-user"></i>
-                </span>
-              </button>
-            </a>
-            <div class="navbar-dropdown">
-              <a href="/login" class="navbar-item">
-                Logar
+
+            <% if(!user) {%>
+              <a class="navbar-link">
+                <button class="button is-rounded" style="background: #485df2 !important;width: 0rem">
+                  <span class="icon is-small is-right">
+                    <i class="fa-solid fa-user"></i>
+                  </span>
+                </button>
               </a>
-              <a href="/cadastro" class="navbar-item">
-                Cadastrar
-              </a>
-            </div>
+              <div class="navbar-dropdown">
+                <a href="/login" class="navbar-item">
+                  Logar
+                </a>
+                <a href="/cadastro" class="navbar-item">
+                  Cadastrar
+                </a>
+              </div>
+            <% } else{%>
+              <a href="/logout" class="navbar-item">Sair &nbsp;<i class="fa-solid fa-right-from-bracket"></i></a>
+            <% } %>
           </div>
         </div>
       </div>

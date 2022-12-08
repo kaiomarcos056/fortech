@@ -28,8 +28,12 @@ class Login {
 
     async login(){
         this.validaCamposLogin();
+        console.log(`Login: ${this.body.matricula} Senha: ${this.body.senha}`)
+        let verificaLoginExiste = await this.listAluno(this.body.matricula,this.body.senha);
+        if(!(verificaLoginExiste.length > 0)) this.errors.push('Usuario não existe.');
+
         if(this.errors.length > 0) return;
-        console.log("ENTROU AQUI!"); 
+        this.user = await this.listAluno(this.body.matricula,this.body.senha);
     }
 
     async register(){
@@ -69,10 +73,8 @@ class Login {
     }
 
     validaCamposLogin(){
-      console.log('validaCampo');
-        if(isNaN(this.body.matricula)){
-            this.errors.push('Somente números na matrícula.');
-        }
+        if(this.body.matricula == '' || this.body.matricula == '') this.errors.push('Matricula e Senha preicsam estar preenchidas.');
+        if(isNaN(this.body.matricula)) this.errors.push('Somente números na matrícula.');
     }
 
 
@@ -92,9 +94,9 @@ class Login {
         }
     }
     
-    async listAluno(matricula){
+    async listAluno(matricula,senha){
         return openDb().then(db => {
-            return db.all('SELECT * FROM aluno WHERE matricula = ?', [matricula] , (err, rows) => {
+            return db.all('SELECT * FROM aluno WHERE matricula = ? AND senha = ?', [matricula,senha] , (err, rows) => {
                if (err) return console.error('Deu erro aqui: ',err.message);
                rows.forEach(row => {
                    return console.log(row);

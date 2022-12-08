@@ -12,14 +12,14 @@ exports.indexCadastro = async (req,res) => {
     }
 };
 
-exports.indexLogin = (req,res) => {
-    console.log(req.session.user);
+exports.indexLogin = (req,res) => {  
     res.render('login');
 };
 
 exports.entrando = async function(req,res){
     try {
         const entra = new Login(req.body);
+
         await entra.login();
         
         if(entra.errors.length > 0){
@@ -30,16 +30,22 @@ exports.entrando = async function(req,res){
             });
             return;
         }
-        req.flash('success', 'logado com sucesso.');
-            req.session.save(function() {
-                return res.redirect('/login');
-            });
-            return;
+       // req.flash('success', 'logado com sucesso.');
+        req.session.user = entra.user;
+        req.session.save(function() {
+            return res.redirect('/');
+        });
+        return;
     }catch(e){
         console.log(e);
         res.render('404');
     }
 };
+
+exports.sair = function(req,res){
+    req.session.destroy();
+    res.redirect('/');
+}
 
 exports.register = async function(req,res){
     try {

@@ -21,36 +21,29 @@
                                 <h1 class="subtitle is-5 sub-prof"><%- profResult.email %></h1>
                             </div>
                             <div class="column is-2">
-                                <% let notas = 0 %>
-                                <% let media = 0 %>
-                                <% listFeedBacks.forEach(feedRes => { %>
-                                <% notas += parseInt(feedRes.nota) %>
-                                <% media++ %>
-                                <% }) %>
-                                <% let notaFinal =  notas/media %>
                                 <figure class="image" style="width: 3rem;left: 0.5rem;">
-                                    <% if( notaFinal < 2.5 ){ %>
+                                    <% if( profResult.nota < 2.5 ){ %>
                                       <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
-                                    <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                                    <% }else if(profResult.nota > 2.5 && profResult.nota < 3.5){ %>
                                       <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
-                                    <% }else if( notaFinal >= 3.5  ){ %>
+                                    <% }else if( profResult.nota >= 3.5  ){ %>
                                       <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
                                     <% } else {%>
                                       <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
                                     <% } %>
                                   </figure>
                                   <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.4rem;font-size: 1.5rem;">
-                                    <% if( notaFinal < 2.5 ){ %>
+                                    <% if( profResult.nota < 2.5 ){ %>
                                       <b class="av-ruim">
-                                        <%- notaFinal.toFixed(1) %>
+                                        <%- parseInt(profResult.nota).toFixed(1) %>
                                       </b>
-                                    <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                                    <% }else if(profResult.nota > 2.5 && profResult.nota < 3.5){ %>
                                       <b class="av-neutra">
-                                        <%- notaFinal.toFixed(1) %>
+                                        <%- parseInt(profResult.nota).toFixed(1) %>
                                       </b>
-                                    <% }else if( notaFinal >= 3.5  ){ %>
+                                    <% }else if( profResult.nota >= 3.5  ){ %>
                                       <b class="av-boa">
-                                        <%- notaFinal.toFixed(1) %>
+                                        <%- parseInt(profResult.nota).toFixed(1) %>
                                       </b>
                                     <% } else {%>
                                         <b style="color: #63635E;"> &nbsp;&nbsp; - </b> 
