@@ -36,11 +36,13 @@
                       <% }else if( notaFinal >= 3.5  ){ %>
                         <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
                       <% } else {%>
-                        <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                        <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
                       <% } %>
                     </figure>
                     <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.5rem;font-size: 1.5rem;">
-                      <% if( notaFinal < 2.5 ){ %>
+                      <% if( notaFinal == null) { %>
+                        <b> - </b>
+                      <% } else if( notaFinal < 2.5 ){ %>
                         <b class="av-ruim">
                           <% if(notaFinal.toFixed(1)){ %>
                             <%- notaFinal.toFixed(1) %>
@@ -59,9 +61,7 @@
                           <% } %>
                         </b>
                       <% } else {%>
-                        <b class="av-ruim">
-                         0.0
-                        </b>
+                        <b style="color: #63635E;"> &nbsp;&nbsp; - </b>  
                       <% } %>
                     </h1>
                 </div>
@@ -155,7 +155,7 @@
                   </h2>
 
                 <h1 class="subtitle is-5 subtitle-disciplinas" style="margin-bottom: 0;">
-                    <b>Você pode conferir a ementa da disciplina link abaixo:</b>
+                    <b>Você pode conferir o Lattes desse professor no link abaixo:</b>
                 </h1>
                 
                 <a href="<%- profResult.curriculo %>" target="_blank" class="link-disciplinas">Currículo Lattes</a>

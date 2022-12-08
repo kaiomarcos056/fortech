@@ -17,22 +17,22 @@
 
                 <% for(let i = 0; i < rsCad.trilha.split(",").length; i++){ %>
                     <% if(rsCad.trilha.split(",")[i]  == 'Sistemas') { %>
-                        <button class="btn-sistema" style="margin-right: 0.5rem;">
+                        <button class="btn-sistema" style="margin-right: 0.5rem;margin-bottom: 0.5rem;"">
                             <span class="icon"><i class="fa-solid fa-code"></i></span>
                             <span>Sistemas</span>
                         </button>
                     <% } else if(rsCad.trilha.split(",")[i]  == 'Design') { %>
-                        <button class="btn-sistema" style="margin-right: 0.5rem;">
+                        <button class="btn-sistema" style="margin-right: 0.5rem;margin-bottom: 0.5rem;">
                             <span class="icon"><i class="fa-solid fa-pen-ruler"></i></span>
                             <span>Design</span>
                         </button>
                     <% } else if(rsCad.trilha.split(",")[i]  == 'Audivisual') { %>
-                        <button class="btn-sistema" style="margin-right: 0.5rem;">
+                        <button class="btn-sistema" style="margin-right: 0.5rem;margin-bottom: 0.5rem;">
                             <span class="icon"><i class="fa-solid fa-clapperboard"></i></span>
                             <span>Audivisual</span>
                         </button>
                     <% } else if(rsCad.trilha.split(",")[i]  == 'Jogos') { %>
-                        <button class="btn-sistema" style="margin-right: 0.5rem;">
+                        <button class="btn-sistema" style="margin-right: 0.5rem;margin-bottom: 0.5rem;">
                             <span class="icon"><i class="fa fa-gamepad"></i></span>
                             <span>Jogos</span>
                         </button>
@@ -88,24 +88,53 @@
                       </div>
                       <div class="column is-3">
                         <center>
-                          <figure class="image is-32x32">
-                            <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg">
-                          </figure>
-                          <h1 class="title is-6 av-boa">
-                            5,0
-                          </h1>
+                          <% let notaTotal = 0 %> 
+                          <% if( hist.nota == null ){ %>
+                              <figure class="image is-32x32">
+                                  <img lass="is-rounded" src="../assets/imgs/carinha-null.svg" />
+                              </figure>
+                              <h1 class="title is-6" style="color: #63635e"> - </h1>
+
+                          <% } else if( hist.nota < 2.5 ){ %>
+                              <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg"/>
+                              </figure>
+                              <% notaTotal = parseInt(hist.nota).toFixed(1) %>
+                              <h1 class="title is-6 av-ruim">
+                                  <%- notaTotal %>
+                              </h1>
+
+                          <% }else if(hist.nota >= 2.5 && hist.nota < 3.5){ %>
+                              <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg"/>
+                              </figure>
+                              <% notaTotal = parseInt(hist.nota).toFixed(1) %>
+                              <h1 class="title is-6 av-neutra">
+                                  <%- notaTotal %>
+                              </h1>
+
+                          <% }else if(hist.nota >= 3.5){ %>
+                              <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg" />
+                              </figure>
+                              <% notaTotal = parseInt(hist.nota).toFixed(1) %>
+                              <h1 class="title is-6 av-boa">
+                                  <%- notaTotal %>
+                              </h1>
+                          <% } %>
                         </center>
                       </div>
                     </div>
                   </a>
                 </div>
                 <% }) %>
-
+                <!--
                 <div class="box box-btn">
                   <h1 class="subitle is-6" style="margin-bottom: 0;">
                     <a href="professorPesquisa.html">Ver Mais...</a>
                   </h1>
                 </div>
+                -->
               </div>
             </div>
 

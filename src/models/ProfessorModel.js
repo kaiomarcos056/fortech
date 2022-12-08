@@ -39,6 +39,28 @@ class Professor {
        })
     }
 
+    async listProfessorResultPesquisa(nomeProf){
+        return openDb().then(db => {
+            return db.all("SELECT * FROM professor WHERE nome LIKE ?", ['%'+nomeProf+'%'] , (err, rows) => {
+               if (err) return console.error('Deu erro aqui: ',err.message);
+               rows.forEach(row => {
+                   return console.log(row);
+               });
+           })
+       })
+    }
+
+    async listDisciplinaResultPesquisa(nomeDisc){
+        return openDb().then(db => {
+            return db.all("SELECT * FROM disciplina WHERE nome LIKE ?", ['%'+nomeDisc+'%'] , (err, rows) => {
+               if (err) return console.error('Deu erro aqui: ',err.message);
+               rows.forEach(row => {
+                   return console.log(row);
+               });
+           })
+       })
+    }
+
     async listFeedBackResult(id){
         return openDb().then(db => {
             return db.all('SELECT feedback.id_fb,feedback.id_prof,feedback.id_aluno,feedback.qualidade,feedback.nota,feedback.comentario,feedback.anonimo,feedback.av_pos,feedback.av_neg,professor.nome,aluno.nome,aluno.foto FROM feedback as feedback INNER JOIN professor as professor ON (professor.id_prof = feedback.id_prof) INNER JOIN aluno as aluno ON (aluno.id_aluno = feedback.id_aluno) WHERE feedback.id_prof = ? ORDER BY id_fb DESC', [id] , (err, rows) => {

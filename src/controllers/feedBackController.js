@@ -4,7 +4,6 @@ exports.registraFeedBack = async function(req,res){
     try {
         const feedback = new FeedBack(req.body,req.params.id);
         await feedback.register();
-
         const comentarios = await feedback.listFeedBackComentarios(req.params.id);
         console.log(comentarios.forEach( notas => {notas.nota}));
 

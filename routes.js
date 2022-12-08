@@ -7,7 +7,6 @@ const professorController = require('./src/controllers/professorController');
 const cadeiraController = require('./src/controllers/cadeiraController');
 const feedBackController = require('./src/controllers/feedBackController');
 
-
 // Rotas da home
 route.get('/', homeController.paginaInicial);
 
@@ -15,11 +14,12 @@ route.get('/', homeController.paginaInicial);
 route.get('/cadastro', loginController.indexCadastro);
 route.post('/register', loginController.register);
 route.get('/login', loginController.indexLogin);
-route.post('/logando', loginController.entrar);
+route.post('/entrando', loginController.entrando);
 
 // Rotas Professor
 route.get('/professor', professorController.indexProfessor);
 route.get('/professor/:id', professorController.indexProfessorResult);
+route.post('/professorPesquisa', professorController.resultProfPesquisa);
 
 // Rotas Feedback
 route.get('/feedback/:id',feedBackController.indexFeedBackResult);

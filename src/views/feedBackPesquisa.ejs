@@ -36,7 +36,7 @@
                                     <% }else if( notaFinal >= 3.5  ){ %>
                                       <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
                                     <% } else {%>
-                                      <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                                      <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
                                     <% } %>
                                   </figure>
                                   <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.4rem;font-size: 1.5rem;">
@@ -53,9 +53,7 @@
                                         <%- notaFinal.toFixed(1) %>
                                       </b>
                                     <% } else {%>
-                                      <b class="av-ruim">
-                                       0.0
-                                      </b>
+                                        <b style="color: #63635E;"> &nbsp;&nbsp; - </b> 
                                     <% } %>
                                   </h1>
                             </div>
@@ -151,18 +149,24 @@
                                                 </div>                                                
                                             </div>
                                             <div class="columns">
+                                                <!--
                                                 <div class="column">
                                                     <p style="font-size: 0.8rem; text-align: right; font-weight: bold;">
-                                                        <span class="icon is-small is-right">
-                                                            <i class="fa-solid fa-up-long" style="color:green;"></i>
-                                                        </span>
-                                                        <b style="color:green;"><%- cmt.av_pos %></b>
-                                                        <span class="icon is-small is-right">
-                                                            <i class="fa-solid fa-down-long" style="color:red;"></i>
-                                                        </span>
-                                                        <b style="color:red;"><%- cmt.av_neg %></b>    
+                                                        <a href="/avFeedPos">
+                                                            <span class="icon is-small is-right">
+                                                                <i class="fa-solid fa-up-long" style="color:green;"></i>
+                                                            </span>
+                                                            <b style="color:green;"><%- cmt.av_pos %></b>
+                                                        </a>
+                                                        <a href="/avFeedNeg">
+                                                            <span class="icon is-small is-right">
+                                                                <i class="fa-solid fa-down-long" style="color:red;"></i>
+                                                            </span>
+                                                            <b style="color:red;"><%- cmt.av_neg %></b>
+                                                        </a>    
                                                     </p>
                                                 </div>
+                                                -->
                                             </div>
                                         </div>
 

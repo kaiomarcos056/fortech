@@ -27,11 +27,9 @@ class Login {
     }   
 
     async login(){
-        //this.validaCampos();
-        //if(this.errors.length > 0) return;
-        return console.log("ENTROU AQUI!");
-        //this.user = await listAluno(this.body.matricula);
-        //if(!this.user) this.errors.push('Usuário não existe.');
+        this.validaCamposLogin();
+        if(this.errors.length > 0) return;
+        console.log("ENTROU AQUI!"); 
     }
 
     async register(){
@@ -69,6 +67,14 @@ class Login {
             this.errors.push('Somente números na matrícula.');
         }
     }
+
+    validaCamposLogin(){
+      console.log('validaCampo');
+        if(isNaN(this.body.matricula)){
+            this.errors.push('Somente números na matrícula.');
+        }
+    }
+
 
     cleanUp(){
         for(const key in this.body){
