@@ -1,0 +1,82 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+
+  <!-- INICIO CONTEUDO-->
+  <section class="hero is-medium  ">
+    <div class="container">
+      <div class="hero-body hero-disciplinas">
+        <div class="columns">
+
+          <div class="column">
+            <h1 class="title is-4 title-disciplinas">Professores</h1>
+
+            <div class="box box-prof" style="padding:1.7rem;">
+
+              <div class="columns is-multiline">
+                <% listProf.forEach(prof => { %>
+                  <div class="column is-4">
+                    <a href="/professor/<%= prof.id_prof%>">
+                      <div class="box box-professores">
+                        <div class="columns is-vcentered">
+
+                          <div class="column is-3">
+                            <figure class="image is-64x64">
+                              <img class="is-rounded" src="<%= prof.foto%>">
+                            </figure>
+                          </div>
+
+                          <div class="column is-7">
+                            <h2 class="title is-6 subtitle-disciplinas" style="margin-bottom: 0;font-size: 1.0rem;text-align:left;">
+                              <% if(prof.nome.split(" ")[1].length > 2){%>
+                                <%= prof.nome.split(" ")[0] + " " + prof.nome.split(" ")[1] %>
+                              <% }else { %>
+                                <%= prof.nome.split(" ")[0] + " " + prof.nome.split(" ")[1] + " " + prof.nome.split(" ")[2] %>
+                              <% } %>
+                            </h2>
+                            <p class="p-disciplinas" style="color:blue;font-size: 0.7rem;"><%= prof.email%></p>
+                          </div>
+
+                          <div class="column is-3">
+                            <% let notaTotal = 0 %>
+                              <% if( prof.nota == null ){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
+                                </figure>
+                                <h1 class="title is-6" style="color: #63635E;"> &nbsp;&nbsp; - </h1>
+                              <% } else if( prof.nota < 2.5 ){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                                </figure>
+                                <% notaTotal = parseInt(prof.nota).toFixed(1) %>
+                                <h1 class="title is-6 av-ruim"><%- notaTotal %></h1>
+                              <% }else if(prof.nota >= 2.5 && prof.nota < 3.5){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
+                                </figure>
+                                <% notaTotal = parseInt(prof.nota).toFixed(1) %>
+                                <h1 class="title is-6 av-neutra"><%- notaTotal %></h1>
+                              <% }else if(prof.nota >= 3.5){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
+                                </figure>
+                                <% notaTotal = parseInt(prof.nota).toFixed(1) %>
+                                <h1 class="title is-6 av-boa"><%- notaTotal %></h1>
+                              <% } %> 
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                <% }) %>  
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FIM CONTEUDO-->
+  <%- include('includes/footer') -%>

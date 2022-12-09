@@ -1,0 +1,264 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+    <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+      <div class="container">
+        <div class="hero-body hero-disciplinas">
+          <div class="columns">
+            <% listProfResult.forEach(profResult => { %>
+            <div class="column is-8" style="padding-right: 5rem; padding-left: 3rem;">
+              <div class="columns is-vcentered">
+
+                <div class="column is-3">
+                  <figure class="image is-128x128">
+                    <img class="is-rounded" src="<%- profResult.foto %>"/>
+                  </figure>
+                </div>
+
+                <div class="column is-6">
+                  <h1 class="title is-5"><%- profResult.nome %></h1>
+                  <h1 class="subtitle is-5 sub-prof"><%- profResult.email %></h1>
+                </div>
+
+                <div class="column is-2">
+                    <% let notas = 0 %>
+                    <% let media = 0 %>
+                    <% listFeedBacks.forEach(feedRes => { %>
+                      <% notas += parseInt(feedRes.nota) %>
+                      <% media++ %>
+                    <% }) %>
+                    <% let notaFinal =  notas/media %>
+                    <figure class="image" style="width: 3rem;left: 0.5rem;">
+                      <% if( notaFinal < 2.5 ){ %>
+                        <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                      <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                        <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
+                      <% }else if( notaFinal >= 3.5  ){ %>
+                        <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
+                      <% } else {%>
+                        <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
+                      <% } %>
+                    </figure>
+                    <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.5rem;font-size: 1.5rem;">
+                      <% if( notaFinal == null) { %>
+                        <b> - </b>
+                      <% } else if( notaFinal < 2.5 ){ %>
+                        <b class="av-ruim">
+                          <% if(notaFinal.toFixed(1)){ %>
+                            <%- notaFinal.toFixed(1) %>
+                          <% } %>
+                        </b>
+                      <% }else if(notaFinal > 2.5 && notaFinal < 3.5){ %>
+                        <b class="av-neutra">
+                          <% if(notaFinal.toFixed(1)){ %>
+                            <%- notaFinal.toFixed(1) %>
+                          <% } %>
+                        </b>
+                      <% }else if( notaFinal >= 3.5  ){ %>
+                        <b class="av-boa">
+                          <% if(notaFinal.toFixed(1)){ %>
+                            <%- notaFinal.toFixed(1) %>
+                          <% } %>
+                        </b>
+                      <% } else {%>
+                        <b style="color: #63635E;"> &nbsp;&nbsp; - </b>  
+                      <% } %>
+                    </h1>
+                </div>
+
+              </div>
+
+              <div class="columns">
+                <div class="columm ml-4 mt-3">
+                  <% let totalAvaliacoes = 0 %>
+
+                  <% let atencioso = 0 %>
+                  <% let flexivel = 0 %>
+                  <% let pontual = 0 %>
+                  <% let organizado = 0 %>
+                  <% let amigavel = 0 %>
+                  <% let didatica = 0 %>
+                  <% let cantor = 0 %>
+                  <% let assiduo = 0 %>
+                  <% let gentil = 0 %>
+                  <% let fofoqueiro = 0 %>
+
+                  <% listFeedBacks.forEach(ql => { %>
+                    <% totalAvaliacoes++ %>
+                    <% if( ql.qualidade != null ) { %>
+                      <% for(let i = 0; i < ql.qualidade.split(",").length; i++){ %>
+                          <% if( ql.qualidade.split(",")[i] == 'Flexivel' ) { %>
+                            <% flexivel++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Pontual' ){ %>
+                            <% pontual++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Organizado' ){ %>
+                            <% organizado++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Amigavel' ){ %>
+                            <% amigavel++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Otima Didatica' ){ %>
+                            <% didatica++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Cantor' ){ %>
+                            <% cantor++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Assiduo' ){ %>
+                            <% assiduo++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Gentil' ){ %>
+                            <% gentil++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Fofoqueiro' ){  %>
+                            <% fofoqueiro++ %>
+                          <% } else if( ql.qualidade.split(",")[i] == 'Atencioso' ){  %>
+                            <% atencioso++ %>
+                          <% } %>
+                      <% } %>
+                    <% } %>
+                  <% }) %>
+
+                  <div class="tags">
+                    <% if( atencioso > 0 ){ %>
+                      <span class="tag is-medium"><%- (atencioso/totalAvaliacoes*100).toFixed(0) %>% Atencioso</span>
+                    <% } %>
+                    <% if( flexivel > 0 ){ %>
+                      <span class="tag is-medium"><%- (flexivel/totalAvaliacoes*100).toFixed(0) %>% Flexível</span>
+                    <% } %>
+                    <% if( pontual > 0 ){ %>
+                      <span class="tag is-medium"><%- (pontual/totalAvaliacoes*100).toFixed(0) %>% Pontual</span>
+                    <% } %>
+                    <% if( organizado > 0 ){ %>
+                      <span class="tag is-medium"><%- (organizado/totalAvaliacoes*100).toFixed(0) %>% Organizado</span>
+                    <% } %>
+                    <% if( amigavel > 0 ){ %>
+                      <span class="tag is-medium"><%- (amigavel/totalAvaliacoes*100).toFixed(0) %>% Amigavel</span>
+                    <% } %>
+                    <% if( didatica > 0 ){ %>
+                      <span class="tag is-medium"><%- (didatica/totalAvaliacoes*100).toFixed(0) %>% Otima Didatica</span>
+                    <% } %>
+                    <% if( cantor > 0 ){ %>
+                      <span class="tag is-medium"><%- (cantor/totalAvaliacoes*100).toFixed(0) %>% Cantor</span>
+                    <% } %>
+                    <% if( assiduo > 0 ){ %>
+                      <span class="tag is-medium"><%- (assiduo/totalAvaliacoes*100).toFixed(0) %>% Assiduo</span>
+                    <% } %>
+                    <% if( gentil > 0 ){ %>
+                      <span class="tag is-medium"><%- (gentil/totalAvaliacoes*100).toFixed(0) %>% Gentil</span>
+                    <% } %>
+                    <% if( fofoqueiro > 0 ){ %>
+                      <span class="tag is-medium"><%- (fofoqueiro/totalAvaliacoes*100).toFixed(0) %>% Fofoqueiro</span>
+                    <% } %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="colums">
+                <div class="column">
+
+                  <h2 class="subtitle is-5 subtitle-disciplinas">
+                    <%- profResult.descricao %>
+                  </h2>
+
+                <h1 class="subtitle is-5 subtitle-disciplinas" style="margin-bottom: 0;">
+                    <b>Você pode conferir o Lattes desse professor no link abaixo:</b>
+                </h1>
+                
+                <a href="<%- profResult.curriculo %>" target="_blank" class="link-disciplinas">Currículo Lattes</a>
+                </div>
+
+              </div>
+            </div>
+            <% }) %>
+            <div class="column is-4">
+                <h1 class="subtitle is-6 subtitle-disciplinas" style="margin-bottom: 0;">
+                    <br><center>Feedbacks Recentes</center> <br>
+                </h1>
+
+                <% listFeedBacksLimitados.forEach(coment => { %>
+                  <div class="box box-professores">
+                      <div class="columns">
+                          <div class="column is-3">
+                            <% if(coment.anonimo != "true") {%>
+                              <figure class="image is-64x64">
+                                  <img class="is-rounded" src="<%- coment.foto %>"/>
+                              </figure>
+                                  <% if(coment.nota <= 2){ %>
+                                      <figure class="image is-24x24">
+                                          <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg" style="margin-top: -1.2rem !important;"/>
+                                      </figure>
+                                      <h1 class="subtitle is-5 subtitle-disciplinas av-ruim" style="font-weight: bold; padding: 0;">
+                                          &nbsp;&nbsp;&nbsp;<%- coment.nota %>
+                                      </h1>
+                                  <% } else if(coment.nota >=2 && coment.nota < 4){%>.0
+                                      <figure class="image is-24x24">
+                                          <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg" style="margin-top: -1.2rem !important;"/>
+                                      </figure>
+                                      <h1 class="subtitle is-5 subtitle-disciplinas av-neutra" style="font-weight: bold; padding: 0;">
+                                          &nbsp;&nbsp;&nbsp;
+                                          <%- coment.nota %>.0
+                                      </h1>
+                                  <% } else{%>
+                                      <figure class="image is-24x24">
+                                          <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg" style="margin-top: -1.2rem !important;"/>
+                                      </figure>
+                                      <h1 class="subtitle is-5 subtitle-disciplinas av-boa" style="font-weight: bold; padding: 0;">
+                                        &nbsp;&nbsp;&nbsp;
+                                        <%- coment.nota %>.0
+                                      </h1>
+                                  <% } %> 
+                          <% } else{%>
+                              <% if(coment.nota <= 2){ %>
+                                  <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                      <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg"/>
+                                  </figure>
+                                  <h1 class="subtitle is-5 subtitle-disciplinas av-ruim" style="font-weight: bold;padding: 0;margin-left: 0.4rem;font-size: 1.5rem;">
+                                    &nbsp;&nbsp;&nbsp;
+                                    <%- coment.nota %>.0
+                                  </h1>
+                              <% } else if(coment.nota >=2 && coment.nota < 4){%>
+                                  <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                      <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg"/>
+                                  </figure>
+                                  <h1 class="subtitle is-5 subtitle-disciplinas av-neutra" style="font-weight: bold;padding: 0;margin-left: 0.4rem;font-size: 1.5rem;">
+                                    &nbsp;&nbsp;&nbsp;
+                                    <%- coment.nota %>.0
+                                  </h1>
+                              <% } else{%>
+                                  <figure class="image" style="width: 3rem;left: 0.5rem;">
+                                      <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg"/>
+                                  </figure>
+                                  <h1 class="subtitle is-5 subtitle-disciplinas av-boa" style="font-weight: bold;padding: 0;margin-left: -0.3rem;font-size: 1.5rem;">
+                                    &nbsp;&nbsp;&nbsp;
+                                    
+                                      <%- coment.nota %>.0
+                                    
+                                  </h1>
+                              <% } %> 
+                          <% } %>
+                          </div>
+                          <div class="column is-9">
+                              <h1 class="title is-6 subtitle-disciplinas" style="margin: 0;">
+                                <% if( coment.anonimo != "true" ){%>
+                                  <h1 class="title is-5" style="padding: 0;margin: 0;"><b><%- coment.nome %></b></h1>
+                                <% } else {%>
+                                  <h1 class="title is-5" style="padding: 0;margin: 0;"><b>Anônimo</b></h1>  
+                                <% } %>
+                              </h1>
+                              <p style="font-size: 0.8rem;"> 
+                                <%- coment.comentario %>
+                              </p>
+                          </div>
+                      </div>
+                      
+                  </div>
+                <% }) %>
+                
+                <% listProfResult.forEach(profResult => { %>
+                <a href="/feedback/<%- profResult.id_prof %>">
+                  <button class="button is-fullwidth ver-mais" style="box-shadow:none !important; border:1px solid gray; color: #485df2;">Ver Mais...</button>
+                </a>
+                <% }) %>
+              <br/>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- FIM CONTEUDO-->
+<%- include('includes/footer') -%>

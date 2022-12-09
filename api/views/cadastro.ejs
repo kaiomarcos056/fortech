@@ -1,0 +1,101 @@
+<%- include('includes/head') %>
+    <%- include('includes/nav') %>
+       <!-- INICIO CONTEUDO-->
+    <section class="hero is-medium">
+        <div class="container">
+          <div class="hero-body hero-disciplinas">
+            <div class="columns">
+              <div class="column is-12" style="padding: 0rem 3rem">
+                <h1 class="title is-4 title-disciplinas">Cadastrar-se</h1>
+                <div class="box box-login">
+                  <div class="columns is-vcentered">
+                    <div class="column is-6">
+
+                    <%- include('includes/mensagens'); %>
+
+                    <form action="/register" method="post">
+                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                      <div class="field">
+                        <label class="label">Nome:</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="Pedro" name="nome" value=""/>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <label class="label">Matricula:</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="86628846" name="matricula"/>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control">
+                          <input class="input" type="text" placeholder="@email.com" name="email"/>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <label class="label">Senha:</label>
+                        <div class="control">
+                          <input class="input" type="password" placeholder="**********" name="senha"/>
+                        </div>
+                      </div>
+
+                      <div class="field">
+                        <label class="label">Confirmar senha:</label>
+                        <div class="control">
+                          <input class="input" type="password" placeholder="**********" name="confirmSenha"/>
+                        </div>
+                      </div>
+
+                      <div class="file has-name is-boxed">
+                        <label class="file-label">
+                          <input class="file-input" type="file" name="file">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Escolha uma foto
+                            </span>
+                          </span>
+                          <span class="file-name">
+                            Screen Shot 2017-07-29 at 15.54.25.png
+                          </span>
+                        </label>
+                      </div>
+                      <br>
+                      <div class="field">
+                        <div class="control">
+                          <label class="checkbox">
+                            <input type="checkbox">
+                            Eu concordo com o <a href="#">termos e Condições</a>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="field is-grouped" style="float: right;">
+                        <div class="">
+                          <button class="btn-login">cadastrar-se</button>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+
+                    <div class="column"></div>
+                    <div class="column is-5">
+                      <figure class="image ">
+                        <img src="./assets/imgs/cadastro.png">
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- FIM CONTEUDO-->
+        <%- include('includes/footer') -%>

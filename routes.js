@@ -1,13 +1,13 @@
 const express = require('express');
 const route = express.Router();
 
-const homeController = require('./src/controllers/homeController');
-const loginController = require('./src/controllers/loginController');
-const professorController = require('./src/controllers/professorController');
-const cadeiraController = require('./src/controllers/cadeiraController');
-const feedBackController = require('./src/controllers/feedBackController');
+const homeController = require('./api/controllers/homeController');
+const loginController = require('./api/controllers/loginController');
+const professorController = require('./api/controllers/professorController');
+const cadeiraController = require('./api/controllers/cadeiraController');
+const feedBackController = require('./api/controllers/feedBackController');
 
-const { loginRequired } = require('./src/middlewares/middleware');
+const { loginRequired } = require('./api/middlewares/middleware');
 
 // Rotas da home
 route.get('/', homeController.paginaInicial);

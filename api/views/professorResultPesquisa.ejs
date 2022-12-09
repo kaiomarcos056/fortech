@@ -1,0 +1,154 @@
+<%- include('includes/head') -%>
+<%- include('includes/nav') -%>
+
+  <!-- INICIO CONTEUDO-->
+  <section class="hero is-medium  ">
+    <div class="container">
+      <div class="hero-body hero-disciplinas">
+        <div class="columns is-multiline">
+
+          <div class="column is-12">
+            <h1 class="title is-4 title-disciplinas">Professores</h1>
+
+            <div class="box box-prof" style="padding:1.7rem;">
+
+              <div class="columns is-multiline">
+                  <% let verificaProf = 0 %>
+                  <% if(listResultPesqProf !== null) { %>
+                  <% listResultPesqProf.forEach( prosRes =>{ %>
+                    <% if(prosRes.nome){ %>
+                    <% verificaProf = 1 %>
+                  <% }}) %>
+                  <% } %>
+
+                  <% if( verificaProf > 0) {%>
+                    <% listResultPesqProf.forEach( prosRes =>{ %>
+                      <div class="column is-4">
+                        <a href="/professor/<%= prosRes.id_prof%>">
+                          <div class="box box-professores">
+                            <div class="columns is-vcentered">
+
+                              <div class="column is-3">
+                                <figure class="image is-64x64">
+                                  <img class="is-rounded" src="<%- prosRes.foto %>">
+                                </figure>
+                              </div>
+
+                              <div class="column is-7">
+                                <h2 class="title is-6 subtitle-disciplinas" style="margin-bottom: 0;font-size: 1.0rem;text-align:left;">
+                                  <% if(prosRes.nome.split(" ")[1].length > 2){%>
+                                    <%= prosRes.nome.split(" ")[0] + " " + prosRes.nome.split(" ")[1] %>
+                                  <% }else { %>
+                                    <%= prosRes.nome.split(" ")[0] + " " + prosRes.nome.split(" ")[1] + " " + prosRes.nome.split(" ")[2] %>
+                                  <% } %>
+                                </h2>
+                                <p class="p-disciplinas" style="color:blue;font-size: 0.7rem;"><%= prosRes.email%></p>
+                              </div>
+
+                              <div class="column is-3">
+                                <% let notaTotal = 0 %>
+                                  <% if( prosRes.nota == null ){ %>
+                                    <figure class="image is-32x32">
+                                      <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
+                                    </figure>
+                                    <h1 class="title is-6" style="color: #63635E;"> &nbsp;&nbsp; - </h1>
+
+                                  <% } else if( prosRes.nota < 2.5 ){ %>
+                                    <figure class="image is-32x32">
+                                      <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
+                                    </figure>
+                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
+                                    <h1 class="title is-6 av-ruim"><%- notaTotal %></h1>
+
+                                  <% }else if(prosRes.nota >= 2.5 && prosRes.nota < 3.5){ %>
+                                    <figure class="image is-32x32">
+                                      <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
+                                    </figure>
+                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
+                                    <h1 class="title is-6 av-neutra"><%- notaTotal %></h1>
+
+                                  <% }else if(prosRes.nota >= 3.5){ %>
+                                    <figure class="image is-32x32">
+                                      <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
+                                    </figure>
+                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
+                                    <h1 class="title is-6 av-boa"><%- notaTotal %> </h1>
+                                  <% } %> 
+                              </div>
+
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    <% }) %>
+                  <% } else { %>
+                    <div class="column is-12">
+                      <center><h1 class="subtitle is-5 title-disciplinas">Nenhum professor encontrado.</h1></center>
+                    </div>
+                  <% } %>
+               
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="column is-12">
+            <h1 class="title is-4 title-disciplinas">Disciplinas</h1>
+
+            <div class="box box-prof" style="padding:1.7rem;">
+
+              <div class="columns is-multiline">
+                  <% let verificaDisc = 0 %>
+                  <% if(listResultPesqDisc !== null) { %>
+                  <% listResultPesqDisc.forEach( prosRes =>{ %>
+                    <% if(prosRes.nome){ %>
+                    <% verificaDisc = 1 %>
+                  <% }}) %>
+                  <% } %>
+
+                  <% if( verificaDisc > 0) {%>
+                    <% listResultPesqDisc.forEach( resDisc =>{ %>
+                      <div class="column is-4">
+                        <a href="/cadeiraResult/<%- resDisc.id_disc %>">
+                            <p class="bd-notification is-primary" style="height: 100% !important; font-size: 0.8rem !important;">
+                                <% if(resDisc.trilha.split(",")[0] == 'Design'){ %>
+                                <span class="icon">
+                                    <i class="fa-solid fa-pen-ruler"></i>
+                                </span>
+                                <% } else if(resDisc.trilha.split(",")[0] == 'Sistemas'){ %>
+                                <span class="icon">
+                                    <i class="fa-solid fa-code"></i>
+                                </span>
+                                <% } else if(resDisc.trilha.split(",")[0] == 'Jogos'){ %>
+                                <span class="icon">
+                                    <i class="fa fa-gamepad" style="color: #ff3f33;"></i>
+                                </span>
+                                <% } else if(resDisc.trilha.split(",")[0] == 'Audivisual'){ %>
+                                <span class="icon">
+                                    <i class="fa-solid fa-clapperboard" style="color: #8133ff;"></i>
+                                </span>
+                                <% } %>
+                                <span style=""><%- resDisc.nome %></span>
+                            </p>
+                        </a>
+                    </div>
+                    <% }) %>
+                  <% } else { %>
+                    <div class="column is-12">
+                      <center><h1 class="subtitle is-5 title-disciplinas">Nenhuma cadeira encontrada.</h1></center>
+                    </div>
+                  <% } %>
+               
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FIM CONTEUDO-->
+  <%- include('includes/footer') -%>
