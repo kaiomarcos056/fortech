@@ -1,7 +1,6 @@
 <!-- INICIO MENU -->
 <nav class="navbar ">   
-    <!-- <div class="container menu-container"> -->
-      <div class="container menu-container">
+    <div class="container menu-container">
       <!-- BRAND -->
       <div class="navbar-brand">
         
@@ -58,11 +57,10 @@
                   Cadastrar
                 </a>
               </div>
-            
+            <% } else{%>
+              <a href="/logout" class="navbar-item">Sair &nbsp;<i class="fa-solid fa-right-from-bracket"></i></a>
+            <% } %>
           </div>
-          <% } else{%>
-            <a href="/logout" class="navbar-item">Sair &nbsp;<i class="fa-solid fa-right-from-bracket"></i></a>
-          <% } %>
         </div>
       </div>
     </div>
