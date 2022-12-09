@@ -1,24 +1,24 @@
-//require('dotenv').config();
 const express = require('express');
 const app = express();
 
-const session = require('cookie-session');
+const session = require('express-session');
+//const session = require('cookie-session');
 const flash = require('connect-flash');
 const routes = require('./routes');
 const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
-const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./api/middlewares/middleware');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 
-const {openDb} =  require('./api/db/configDB');
+const {openDb} =  require('./src/db/configDB');
 openDb();
 
 app.use(helmet());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.resolve(__dirname, '..','public')));
+app.use(express.static(path.resolve(__dirname, 'public')));
 
 const sessionOptions = session({
   secret: 'akasdfj0út23453456+54qt23qv  qwf qwer qwer qewr asdasdasda a6()',
@@ -31,9 +31,10 @@ const sessionOptions = session({
 });
 
 app.use(sessionOptions);
+
 app.use(flash());
 
-app.set('views', path.resolve(__dirname, 'api', 'views'));
+app.set('views', path.resolve(__dirname, 'src', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(csrf());
