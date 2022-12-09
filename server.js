@@ -9,9 +9,9 @@ const path = require('path');
 const helmet = require('helmet');
 const csrf = require('csurf');
 
-const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./api/middlewares/middleware');
 
-const {openDb} =  require('./src/db/configDB');
+const {openDb} =  require('./api/db/configDB');
 openDb();
 
 app.use(helmet());
