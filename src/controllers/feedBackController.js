@@ -15,10 +15,7 @@ exports.registraFeedBack = async function(req,res){
             return;
         }
         req.flash('success', 'Seu feedBack foi cadastrado com sucesso.');
-        //req.session.save(function() {
-            return res.redirect('/feedback/'+req.params.id);
-        //});
-        //return;
+        return res.redirect('/feedback/'+req.params.id);
     }catch(e){
         console.log(e);
         res.render('404');

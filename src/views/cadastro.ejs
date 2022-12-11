@@ -13,45 +13,47 @@
 
                     <%- include('includes/mensagens'); %>
 
+                    <label class="label" style="color: red;">Campos com * são de preenchimento obrigatório:</label>
+
                     <form action="/register" method="post">
                       <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                       <div class="field">
-                        <label class="label">Nome:</label>
+                        <label class="label">*Nome:</label>
                         <div class="control">
                           <input class="input" type="text" placeholder="Pedro" name="nome" value=""/>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label">Matricula:</label>
+                        <label class="label">*Matricula:</label>
                         <div class="control">
                           <input class="input" type="text" placeholder="86628846" name="matricula"/>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label">Email</label>
+                        <label class="label">*Email</label>
                         <div class="control">
                           <input class="input" type="text" placeholder="@email.com" name="email"/>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label">Senha:</label>
+                        <label class="label">*Senha:</label>
                         <div class="control">
                           <input class="input" type="password" placeholder="**********" name="senha"/>
                         </div>
                       </div>
 
                       <div class="field">
-                        <label class="label">Confirmar senha:</label>
+                        <label class="label">*Confirmar senha:</label>
                         <div class="control">
                           <input class="input" type="password" placeholder="**********" name="confirmSenha"/>
                         </div>
                       </div>
 
                       <div class="file has-name is-boxed">
-                        <label class="file-label">
+                        <label class="file-label" style="width: 100%;">
                           <input class="file-input" type="file" name="file">
                           <span class="file-cta">
                             <span class="file-icon">
@@ -61,17 +63,14 @@
                               Escolha uma foto
                             </span>
                           </span>
-                          <span class="file-name">
-                            Screen Shot 2017-07-29 at 15.54.25.png
-                          </span>
                         </label>
                       </div>
                       <br>
                       <div class="field">
                         <div class="control">
                           <label class="checkbox">
-                            <input type="checkbox">
-                            Eu concordo com o <a href="#">termos e Condições</a>
+                            <input type="checkbox" value="checked" name="termos">
+                           *Eu concordo com o <a href="#">termos e Condições</a>
                           </label>
                         </div>
                       </div>

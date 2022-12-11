@@ -35,15 +35,15 @@
                                   <h1 class="" style="font-weight: bold;padding: 0;margin-left:0.4rem;font-size: 1.5rem;">
                                     <% if( profResult.nota < 2.5 ){ %>
                                       <b class="av-ruim">
-                                        <%- parseInt(profResult.nota).toFixed(1) %>
+                                        <%- profResult.nota %>
                                       </b>
                                     <% }else if(profResult.nota > 2.5 && profResult.nota < 3.5){ %>
                                       <b class="av-neutra">
-                                        <%- parseInt(profResult.nota).toFixed(1) %>
+                                        <%- profResult.nota %>
                                       </b>
                                     <% }else if( profResult.nota >= 3.5  ){ %>
                                       <b class="av-boa">
-                                        <%- parseInt(profResult.nota).toFixed(1) %>
+                                        <%- profResult.nota %>
                                       </b>
                                     <% } else {%>
                                         <b style="color: #63635E;"> &nbsp;&nbsp; - </b> 

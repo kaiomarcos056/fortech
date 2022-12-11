@@ -56,27 +56,27 @@
                                 <figure class="image is-32x32">
                                     <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg"/>
                                 </figure>
-                                <% notaTotal = parseInt(profResult.nota).toFixed(1) %>
+                                
                                 <h1 class="title is-6 av-ruim">
-                                    <%- notaTotal %>
+                                    <%- profResult.nota %>
                                 </h1>
 
                             <% }else if(profResult.nota >= 2.5 && profResult.nota < 3.5){ %>
                                 <figure class="image is-32x32">
                                     <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg"/>
                                 </figure>
-                                <% notaTotal = parseInt(profResult.nota).toFixed(1) %>
+                                
                                 <h1 class="title is-6 av-neutra">
-                                    <%- notaTotal %>
+                                  <%- profResult.nota %>
                                 </h1>
 
                             <% }else if(profResult.nota >= 3.5){ %>
                                 <figure class="image is-32x32">
                                     <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg" />
                                 </figure>
-                                <% notaTotal = parseInt(profResult.nota).toFixed(1) %>
+                                
                                 <h1 class="title is-6 av-boa">
-                                    <%- notaTotal %>
+                                  <%- profResult.nota %>
                                 </h1>
                             <% } %>
                           </center>
@@ -131,51 +131,31 @@
                           </div>
                           <div class="column is-2">
                             <center>
-                              <% let notaTotal = 0 %> <% if( profs.nota == null
-                              ){ %>
-                              <figure class="image is-32x32">
-                                <img
-                                  class="is-rounded"
-                                  src="../assets/imgs/carinha-null.svg"
-                                />
-                              </figure>
-                              <h1 class="title is-6" style="color: #63635e">
-                                 -
-                              </h1>
+                              <% if( profs.nota == null){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-null.svg"/>
+                                </figure>
+                                <h1 class="title is-6" style="color: #63635e">-</h1>
+
                               <% } else if( profs.nota < 2.5 ){ %>
-                              <figure class="image is-32x32">
-                                <img
-                                  class="is-rounded"
-                                  src="../assets/imgs/carinha-raiva.svg"
-                                />
-                              </figure>
-                              <% notaTotal = parseInt(profs.nota).toFixed(1) %>
-                              <h1 class="title is-6 av-ruim">
-                                <%- notaTotal %>
-                              </h1>
-                              <% }else if(profs.nota >= 2.5 && profs.nota <
-                              3.5){ %>
-                              <figure class="image is-32x32">
-                                <img
-                                  class="is-rounded"
-                                  src="../assets/imgs/carinha-neutra.svg"
-                                />
-                              </figure>
-                              <% notaTotal = parseInt(profs.nota).toFixed(1) %>
-                              <h1 class="title is-6 av-neutra">
-                                <%- notaTotal %>
-                              </h1>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-raiva.svg"/>
+                                </figure>
+                                <h1 class="title is-6 av-ruim">
+                                  <%- profs.nota %>
+                                </h1>
+
+                              <% }else if(profs.nota >= 2.5 && profs.nota < 3.5){ %>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-neutra.svg"/>
+                                </figure>
+                                <h1 class="title is-6 av-neutra"><%- profs.nota %></h1>
+
                               <% }else if(profs.nota >= 3.5){ %>
-                              <figure class="image is-32x32">
-                                <img
-                                  class="is-rounded"
-                                  src="../assets/imgs/carinha-feliz.svg"
-                                />
-                              </figure>
-                              <% notaTotal = parseInt(profs.nota).toFixed(1) %>
-                              <h1 class="title is-6 av-boa">
-                                <%- notaTotal %>
-                              </h1>
+                                <figure class="image is-32x32">
+                                  <img class="is-rounded" src="../assets/imgs/carinha-feliz.svg"/>
+                                </figure>
+                                <h1 class="title is-6 av-boa"><%- profs.nota %></h1>
                               <% } %>
                             </center>
                           </div>

@@ -1,38 +1,26 @@
 const validator = require('validator');
 const {openDb} = require('../db/configDB');
 
-const multer = require('multer');
-var storage = multer.diskStorage({
-    filename: function(req,file,cb){
-        let nome = file.originalname;
-        cb(null,nome);
-    },
-    destination: function(req,file,cb){
-        let path = "../../public/assets/imgs/alunos";
-        cb(null,path);
-    }
-})
-
-const util = require('util');
-const fs = require('fs');
-const path = require('path');
-const copyFilePromise = util.promisify(fs.copyFile);
 
 class Login {
     constructor(body){
         this.body = body;
         this.errors = [];
+        this.errorsLogin = [];
         this.user = null;
-        this.upload = multer({storage});
     }   
 
     async login(){
-        this.validaCamposLogin();
+        await this.validaCamposLogin();
         console.log(`Login: ${this.body.matricula} Senha: ${this.body.senha}`)
-        let verificaLoginExiste = await this.listAluno(this.body.matricula,this.body.senha);
-        if(!(verificaLoginExiste.length > 0)) this.errors.push('Usuario não existe.');
 
-        if(this.errors.length > 0) return;
+        //let verificaLoginExiste = await this.listAluno(this.body.matricula,this.body.senha);
+        //console.log(verificaLoginExiste.length);
+        //if(verificaLoginExiste.length < 1) this.errors.push('Usuário não existe.');
+        //console.log(verificaLoginExiste.length > 0);
+        //console.log(this.errors);
+
+        if(this.errorsLogin.length > 0) return;
         this.user = await this.listAluno(this.body.matricula,this.body.senha);
     }
 
@@ -40,7 +28,6 @@ class Login {
         this.validaCampos();
         if(this.errors.length > 0) return;
         try{
-            //this.user = await insertAluno(this.body);
             await this.inserirAlno(this.body);
             console.log(this.body);
         }catch(e){
@@ -70,11 +57,16 @@ class Login {
         if(isNaN(this.body.matricula)){
             this.errors.push('Somente números na matrícula.');
         }
+        if(this.body.file === '' ) this.body.file = "perfil-vazio.jpg";
+        if(this.body.termos !== 'checked') this.errors.push('Você precisa aceitar os termos de condição');
     }
 
-    validaCamposLogin(){
-        if(this.body.matricula == '' || this.body.matricula == '') this.errors.push('Matricula e Senha preicsam estar preenchidas.');
-        if(isNaN(this.body.matricula)) this.errors.push('Somente números na matrícula.');
+    async validaCamposLogin(){
+        if(this.body.matricula == '' || this.body.matricula == '') this.errorsLogin.push('Matricula e Senha precisam estar preenchidas.');
+        if(isNaN(this.body.matricula)) this.errorsLogin.push('Somente números na matrícula.');
+
+        let verificaLoginExiste = await this.listAluno(this.body.matricula,this.body.senha);
+        if(verificaLoginExiste.length < 1) this.errorsLogin.push('Usuário não existe.');
     }
 
 
@@ -90,7 +82,8 @@ class Login {
             email: this.body.email,
             senha: this.body.senha,
             confirmSenha: this.body.confirmSenha,
-            file: this.body.file
+            file: this.body.file,
+            termos: this.body.termos
         }
     }
     
