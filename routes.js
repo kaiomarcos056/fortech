@@ -1,6 +1,6 @@
 const express = require('express');
 const route = express.Router();
-var upload = require('./src/models/FileModel');
+const upload = require('./src/models/FileModel');
 
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');

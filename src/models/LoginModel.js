@@ -18,10 +18,10 @@ class Login {
     }
 
     async register(){
-        this.validaCampos();
+       // this.validaCampos();
         if(this.errors.length > 0) return;
         try{
-            await this.inserirAlno(this.body);
+            await this.inserirAlno(this.body,"perfil-vazio.jpg");
             console.log(this.body);
         }catch(e){
             console.log(e);
@@ -34,9 +34,9 @@ class Login {
         })
     }
 
-    async inserirAlno(aluno){
+    async inserirAlno(aluno,foto){
         openDb().then(db => {
-            db.run('INSERT INTO aluno(nome,matricula,email,senha,foto) VALUES(?, ?, ?, ?, ?)', [aluno.nome, aluno.matricula, aluno.email, aluno.senha, `../assets/imgs/alunos/${aluno.file}`])
+            db.run('INSERT INTO aluno(nome,matricula,email,senha,foto) VALUES(?, ?, ?, ?, ?)', [aluno.nome, aluno.matricula, aluno.email, aluno.senha, `../assets/imgs/alunos/${foto}`])
         });
     }
 
@@ -50,7 +50,7 @@ class Login {
         if(isNaN(this.body.matricula)){
             this.errors.push('Somente números na matrícula.');
         }
-        if(this.body.file === '' ) this.body.file = "perfil-vazio.jpg";
+        if(this.body.file === '' || this.body.file == null) this.body.file = "perfil-vazio.jpg";
         if(this.body.termos !== 'checked') this.errors.push('Você precisa aceitar os termos de condição');
     }
 

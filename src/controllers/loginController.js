@@ -50,10 +50,10 @@ exports.sair = function(req,res){
 
 exports.register = async function(req,res){
     try {
-        console.log(req.body);
+        console.log(req.file.filename);
         const login = new Login(req.body);
         await login.register();
-        await login.login();
+        //await login.login();
         if(login.errors.length > 0){
             console.log('Erros #01: ',login.errors)
             req.flash('errors', login.errors);
