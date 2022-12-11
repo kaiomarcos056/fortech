@@ -13,7 +13,10 @@
         </div>
         <div class="column is-6">
           <form action="/professorPesquisa" method="post" style="display: flex;">
-              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+             
+                <input type="text" name="_csrf" value="">
+           
+              
               <input class="input is-rounded" type="text" name="nomeProf" placeholder="Pesquise por Disciplinas ou Professores..." />
               <button class="button is-rounded">
                 <span class="icon is-small is-right">

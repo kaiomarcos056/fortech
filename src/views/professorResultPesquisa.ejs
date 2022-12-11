@@ -46,7 +46,6 @@
                               </div>
 
                               <div class="column is-3">
-                                <% let notaTotal = 0 %>
                                   <% if( prosRes.nota == null ){ %>
                                     <figure class="image is-32x32">
                                       <img class="is-rounded"src="../assets/imgs/carinha-null.svg"/>
@@ -57,22 +56,22 @@
                                     <figure class="image is-32x32">
                                       <img class="is-rounded"src="../assets/imgs/carinha-raiva.svg"/>
                                     </figure>
-                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
-                                    <h1 class="title is-6 av-ruim"><%- notaTotal %></h1>
+                                    
+                                    <h1 class="title is-6 av-ruim"><%- prosRes.nota %></h1>
 
                                   <% }else if(prosRes.nota >= 2.5 && prosRes.nota < 3.5){ %>
                                     <figure class="image is-32x32">
                                       <img class="is-rounded"src="../assets/imgs/carinha-neutra.svg"/>
                                     </figure>
-                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
-                                    <h1 class="title is-6 av-neutra"><%- notaTotal %></h1>
+                                    
+                                    <h1 class="title is-6 av-neutra"><%- prosRes.nota %></h1>
 
                                   <% }else if(prosRes.nota >= 3.5){ %>
                                     <figure class="image is-32x32">
                                       <img class="is-rounded"src="../assets/imgs/carinha-feliz.svg"/>
                                     </figure>
-                                    <% notaTotal = parseInt(prosRes.nota).toFixed(1) %>
-                                    <h1 class="title is-6 av-boa"><%- notaTotal %> </h1>
+                                    
+                                    <h1 class="title is-6 av-boa"><%- prosRes.nota %> </h1>
                                   <% } %> 
                               </div>
 

@@ -50,6 +50,7 @@ exports.sair = function(req,res){
 
 exports.register = async function(req,res){
     try {
+        console.log(req.body);
         const login = new Login(req.body);
         await login.register();
         await login.login();

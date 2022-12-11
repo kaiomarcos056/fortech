@@ -1,5 +1,5 @@
 <%- include('includes/head') %>
-    <%- include('includes/nav') %>
+<%- include('includes/nav') %>
        <!-- INICIO CONTEUDO-->
     <section class="hero is-medium">
         <div class="container">
@@ -15,8 +15,9 @@
 
                     <label class="label" style="color: red;">Campos com * são de preenchimento obrigatório:</label>
 
-                    <form action="/register" method="post">
-                      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <form action="/register" method="post" enctype="multipart/form-data">
+
+                      <input type="text" name="_csrf" value="">
                       <div class="field">
                         <label class="label">*Nome:</label>
                         <div class="control">

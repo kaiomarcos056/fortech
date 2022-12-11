@@ -1,5 +1,6 @@
 const express = require('express');
 const route = express.Router();
+var upload = require('./src/models/FileModel');
 
 const homeController = require('./src/controllers/homeController');
 const loginController = require('./src/controllers/loginController');
@@ -14,7 +15,7 @@ route.get('/', homeController.paginaInicial);
 
 // Rotas de login/cadastro
 route.get('/cadastro', loginController.indexCadastro);
-route.post('/register', loginController.register);
+route.post('/register', upload.single("file"), loginController.register);
 route.get('/login', loginController.indexLogin);
 route.post('/entrando', loginController.entrando);
 route.get('/logout',loginController.sair);

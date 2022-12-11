@@ -1,7 +1,6 @@
 const validator = require('validator');
 const {openDb} = require('../db/configDB');
 
-
 class Login {
     constructor(body){
         this.body = body;
@@ -13,12 +12,6 @@ class Login {
     async login(){
         await this.validaCamposLogin();
         console.log(`Login: ${this.body.matricula} Senha: ${this.body.senha}`)
-
-        //let verificaLoginExiste = await this.listAluno(this.body.matricula,this.body.senha);
-        //console.log(verificaLoginExiste.length);
-        //if(verificaLoginExiste.length < 1) this.errors.push('Usuário não existe.');
-        //console.log(verificaLoginExiste.length > 0);
-        //console.log(this.errors);
 
         if(this.errorsLogin.length > 0) return;
         this.user = await this.listAluno(this.body.matricula,this.body.senha);
