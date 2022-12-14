@@ -5,7 +5,6 @@ exports.indexCadastro = async (req,res) => {
         const aluno = new Login(req.body);
         await aluno.criaTableAluno();
         console.log(req.body)
-        //aluno.upload.single(req.body.file);
         res.render('cadastro');
     }catch(e){
         console.log(e);
@@ -31,7 +30,6 @@ exports.entrando = async function(req,res){
             });
             return;
         }
-       // req.flash('success', 'logado com sucesso.');
         req.session.user = entra.user;
         req.session.save(function() {
             return res.redirect('/');
@@ -46,14 +44,12 @@ exports.entrando = async function(req,res){
 exports.sair = function(req,res){
     req.session.destroy();
     res.redirect('/');
-}
+};
 
 exports.register = async function(req,res){
     try {
-        console.log(req.file.filename);
         const login = new Login(req.body);
         await login.register();
-        //await login.login();
         if(login.errors.length > 0){
             console.log('Erros #01: ',login.errors)
             req.flash('errors', login.errors);

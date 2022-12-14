@@ -18,7 +18,7 @@ class Login {
     }
 
     async register(){
-       // this.validaCampos();
+        this.validaCampos();
         if(this.errors.length > 0) return;
         try{
             await this.inserirAlno(this.body,"perfil-vazio.jpg");
